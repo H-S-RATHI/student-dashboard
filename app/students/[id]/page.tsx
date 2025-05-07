@@ -18,7 +18,8 @@ import { redirect } from "next/navigation"
 export default function StudentDetailsPage({ params }: { params: { id: string } }) {
   // Use React.use() to unwrap the params
   const unwrappedParams = React.use(params as any);
-  const studentId = unwrappedParams.id;
+  // Get the student ID directly from params
+  const studentId = params.id;
   
   const [student, setStudent] = useState<Student | null>(null)
   const [isLoading, setIsLoading] = useState(true)
