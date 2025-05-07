@@ -84,11 +84,48 @@ export default function StudentDetailsPage({ params }: { params: { id: string } 
             <Skeleton className="h-8 w-1/3" />
             <Skeleton className="h-4 w-1/4" />
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-2/3" />
+          <CardContent>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Student Information Section */}
+                <div className="space-y-4">
+                  <Skeleton className="h-6 w-2/3" />
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-4">
+                      <Skeleton className="h-4 w-20" />
+                      <Skeleton className="h-4 w-40" />
+                    </div>
+                    
+                    <div className="flex items-center gap-4">
+                      <Skeleton className="h-4 w-20" />
+                      <Skeleton className="h-4 w-40" />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Academic Information Section */}
+                <div className="space-y-4">
+                  <Skeleton className="h-6 w-2/3" />
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-4">
+                      <Skeleton className="h-4 w-20" />
+                      <Skeleton className="h-4 w-40" />
+                    </div>
+                    
+                    <div className="flex items-center gap-4">
+                      <Skeleton className="h-4 w-20" />
+                      <Skeleton className="h-4 w-40" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </CardContent>
+          <CardFooter className="border-t">
+            <Skeleton className="h-4 w-40" />
+          </CardFooter>
         </Card>
       </DashboardShell>
     )
@@ -99,14 +136,28 @@ export default function StudentDetailsPage({ params }: { params: { id: string } 
       <DashboardShell>
         <DashboardHeader heading="Student Not Found" text="The requested student could not be found." />
         <Card>
-          <CardContent className="pt-6">
-            <p>The student you are looking for does not exist or has been removed.</p>
-            <Button asChild className="mt-4">
-              <Link href="/students">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Students
-              </Link>
-            </Button>
+          <CardHeader>
+            <CardTitle>Student Not Found</CardTitle>
+            <CardDescription>The requested student information is not available</CardDescription>
+          </CardHeader>
+          <CardContent className="pt-2">
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <div className="rounded-full bg-muted p-6 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-muted-foreground">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">No Student Record Found</h3>
+              <p className="text-sm text-muted-foreground mb-6">The student you are looking for does not exist or has been removed.</p>
+              <Button asChild>
+                <Link href="/students">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Students List
+                </Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </DashboardShell>
@@ -141,21 +192,42 @@ export default function StudentDetailsPage({ params }: { params: { id: string } 
           <CardTitle>{student.name}</CardTitle>
           <CardDescription>Student ID: {student.id}</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid gap-2">
-            <h3 className="text-sm font-medium">Email</h3>
-            <p className="text-sm text-muted-foreground">{student.email}</p>
-          </div>
-          <div className="grid gap-2">
-            <h3 className="text-sm font-medium">Course</h3>
-            <p className="text-sm text-muted-foreground">{student.course}</p>
-          </div>
-          <div className="grid gap-2">
-            <h3 className="text-sm font-medium">Enrollment Date</h3>
-            <p className="text-sm text-muted-foreground">{new Date().toLocaleDateString()}</p>
+        <CardContent>
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Student Information Section */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold border-b pb-2">Personal Information</h3>
+                
+                <div className="grid grid-cols-3 items-center">
+                  <span className="font-medium text-sm">Full Name:</span>
+                  <span className="col-span-2 text-sm">{student.name}</span>
+                </div>
+                
+                <div className="grid grid-cols-3 items-center">
+                  <span className="font-medium text-sm">Email:</span>
+                  <span className="col-span-2 text-sm">{student.email}</span>
+                </div>
+              </div>
+              
+              {/* Academic Information Section */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold border-b pb-2">Academic Information</h3>
+                
+                <div className="grid grid-cols-3 items-center">
+                  <span className="font-medium text-sm">Course:</span>
+                  <span className="col-span-2 text-sm">{student.course}</span>
+                </div>
+                
+                <div className="grid grid-cols-3 items-center">
+                  <span className="font-medium text-sm">Enrollment Date:</span>
+                  <span className="col-span-2 text-sm">{new Date().toLocaleDateString()}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="border-t">
           <p className="text-xs text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
         </CardFooter>
       </Card>
