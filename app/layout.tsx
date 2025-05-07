@@ -5,6 +5,7 @@ import { AuthProvider } from "@/contexts/auth-context"
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarToggleWrapper } from "@/components/sidebar-toggle-wrapper"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -28,7 +29,10 @@ export default function RootLayout({
             <SidebarProvider>
               <div className="flex min-h-screen w-full">
                 <AppSidebar className="shrink-0" />
-                <div className="flex-1 w-full max-w-full">{children}</div>
+                <div className="flex-1 w-full max-w-full">
+                  <SidebarToggleWrapper />
+                  {children}
+                </div>
               </div>
               <Toaster />
             </SidebarProvider>

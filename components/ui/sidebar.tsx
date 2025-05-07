@@ -300,16 +300,23 @@ const SidebarRail = React.forwardRef<
       onClick={toggleSidebar}
       title="Toggle Sidebar"
       className={cn(
-        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
+        "absolute inset-y-0 z-20 hidden w-6 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[3px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
         "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
         "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar",
-        "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
-        "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
+        "[[data-side=left][data-collapsible=offcanvas]_&]:-right-3 [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:right-0 [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:flex [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:items-center [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:justify-center [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:bg-sidebar [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:w-8 [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:h-10 [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:rounded-r-md [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:border [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:border-l-0 [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:shadow-sm",
+        "[[data-side=right][data-collapsible=offcanvas]_&]:-left-3 [[data-side=right][data-collapsible=offcanvas][data-state=collapsed]_&]:left-0",
         className
       )}
       {...props}
-    />
+    >
+      {/* Add a visible icon when sidebar is collapsed */}
+      <span className="hidden [[data-side=left][data-collapsible=offcanvas][data-state=collapsed]_&]:block">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m9 18 6-6-6-6"/>
+        </svg>
+      </span>
+    </button>
   )
 })
 SidebarRail.displayName = "SidebarRail"
