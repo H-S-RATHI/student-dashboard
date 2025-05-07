@@ -68,13 +68,20 @@ export function AppSidebar({ className }: AppSidebarProps) {
         </SidebarContent>
         <SidebarFooter className="p-4">
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span className="text-sm font-medium">{user ? user.email : "Not logged in"}</span>
-              </div>
+            {/* Theme Toggle at the top */}
+            <div className="flex justify-end">
               <ModeToggle />
             </div>
+            
+            {/* User Email with truncation */}
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4 flex-shrink-0" />
+              <span className="text-sm font-medium truncate" title={user ? user.email : "Not logged in"}>
+                {user ? user.email : "Not logged in"}
+              </span>
+            </div>
+            
+            {/* Logout Button */}
             {user && (
               <button
                 onClick={logout}
