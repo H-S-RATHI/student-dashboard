@@ -33,8 +33,10 @@ const formSchema = z.object({
 })
 
 export default function EditStudentPage({ params }: { params: { id: string } }) {
-  // Get the student ID directly from params
-  const studentId = params.id;
+  // Use React.use() to unwrap the params
+  const unwrappedParams = React.use(params as any) as { id: string };
+  // Get the student ID from unwrapped params
+  const studentId = unwrappedParams.id;
   
   const router = useRouter()
   const { toast } = useToast()

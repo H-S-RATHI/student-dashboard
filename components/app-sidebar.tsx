@@ -17,13 +17,17 @@ import { useAuth } from "@/contexts/auth-context"
 import { BookOpen, GraduationCap, Home, LogOut, PlusCircle, User } from "lucide-react"
 import Link from "next/link"
 
-export function AppSidebar() {
+interface AppSidebarProps {
+  className?: string;
+}
+
+export function AppSidebar({ className }: AppSidebarProps) {
   const pathname = usePathname()
   const { user, logout } = useAuth()
 
   return (
     <>
-      <Sidebar>
+      <Sidebar className={className}>
         <SidebarHeader className="flex items-center justify-between p-4">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <GraduationCap className="h-6 w-6" />
