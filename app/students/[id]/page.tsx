@@ -228,7 +228,7 @@ export default function StudentDetailsPage({ params }: { params: { id: string } 
           </div>
         </CardContent>
         <CardFooter className="border-t">
-          <p className="text-xs text-muted-foreground">Last updated: {new Date().toLocaleDateString()}</p>
+          <p className="text-xs text-muted-foreground py-6">Last updated: {new Date().toLocaleDateString()}</p>
         </CardFooter>
       </Card>
     </DashboardShell>
