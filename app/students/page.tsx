@@ -77,9 +77,9 @@ export default function StudentsPage() {
         </Link>
       </DashboardHeader>
 
-      <div className="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
-        <div className="flex w-full items-center space-x-2 md:w-2/3">
-          <div className="relative w-full md:w-2/3">
+      <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 w-full mb-4">
+        <div className="flex w-full items-center space-x-2">
+          <div className="relative w-full md:w-2/3 lg:w-3/4">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
@@ -90,7 +90,7 @@ export default function StudentsPage() {
             />
           </div>
           <Select value={courseFilter} onValueChange={setCourseFilter}>
-            <SelectTrigger className="w-full md:w-1/3">
+            <SelectTrigger className="w-full md:w-1/3 lg:w-1/4">
               <SelectValue placeholder="Filter by course" />
             </SelectTrigger>
             <SelectContent>

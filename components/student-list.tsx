@@ -13,8 +13,8 @@ interface StudentListProps {
 export function StudentList({ students, isLoading, error }: StudentListProps) {
   if (isLoading) {
     return (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {Array.from({ length: 6 }).map((_, i) => (
+      <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
+        {Array.from({ length: 8 }).map((_, i) => (
           <Card key={i} className="overflow-hidden">
             <CardHeader className="p-4">
               <Skeleton className="h-5 w-3/4" />
@@ -56,7 +56,7 @@ export function StudentList({ students, isLoading, error }: StudentListProps) {
   }
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
       {students.map((student) => (
         <Link key={student.id} href={`/students/${student.id}`}>
           <Card className="h-full overflow-hidden transition-colors hover:bg-muted/50">

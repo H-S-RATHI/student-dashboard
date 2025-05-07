@@ -26,9 +26,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <AuthProvider>
             <SidebarProvider>
-              <div className="flex min-h-screen">
-                <AppSidebar />
-                <div className="flex-1">{children}</div>
+              <div className="flex min-h-screen w-full">
+                <AppSidebar className="shrink-0" />
+                <div className="flex-1 w-full max-w-full">{children}</div>
               </div>
               <Toaster />
             </SidebarProvider>
