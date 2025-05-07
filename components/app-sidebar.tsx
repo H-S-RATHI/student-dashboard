@@ -68,28 +68,33 @@ export function AppSidebar({ className }: AppSidebarProps) {
         </SidebarContent>
         <SidebarFooter className="p-4">
           <div className="flex flex-col gap-4">
-            {/* Theme Toggle at the top */}
-            <div className="flex justify-end">
-              <ModeToggle />
-            </div>
-            
             {/* User Email with truncation */}
             <div className="flex items-center gap-2">
               <User className="h-4 w-4 flex-shrink-0" />
-              <span className="text-sm font-medium truncate" title={user ? user.email : "Not logged in"}>
+              <span className="text-sm font-medium truncate">
                 {user ? user.email : "Not logged in"}
               </span>
             </div>
             
-            {/* Logout Button */}
+            {/* Logout Button with Theme Toggle before it */}
             {user && (
-              <button
-                onClick={logout}
-                className="flex w-full items-center gap-2 rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-              >
-                <LogOut className="h-4 w-4" />
-                <span>Logout</span>
-              </button>
+              <>
+                <div className="flex w-full items-center justify-between rounded-md text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="h-4 w-4" />
+                    <span>Theme</span>
+                  </div>
+                  <ModeToggle />
+                </div>
+                
+                <button
+                  onClick={logout}
+                  className="flex w-full items-center gap-2 rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Logout</span>
+                </button>
+              </>
             )}
           </div>
         </SidebarFooter>
